@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #121212;
+  --color-surface: #1E1E1E;
+  --color-neon-purple: #00C897;
+  --color-neon-blue: #0081CF;
+  --color-neon-pink: #FF6B6B;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white font-sans transition-colors duration-300;
+  }
+  
+  body.light {
+    @apply bg-gray-50 text-gray-900;
+    --color-background: #F9FAFB;
+    --color-surface: #FFFFFF;
+  }
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-neon-purple via-neon-blue to-neon-pink;
+}
+
+.light .gradient-text {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-indigo-600 to-blue-600;
+}
+
+.light .bg-background { @apply bg-gray-50; }
+.light .bg-white\/5 { @apply bg-gray-200; }
+.light .border-white\/10 { @apply border-gray-300; }
+.light .text-gray-400 { @apply text-gray-600; }
+.light .text-gray-500 { @apply text-gray-500; }
+
+.gradient-button {
+  @apply bg-linear-to-r from-neon-purple to-neon-blue hover:opacity-90 transition-opacity;
+}
+
+.neon-glow {
+  box-shadow: 0 0 15px rgba(0, 200, 151, 0.4);
+}
+
+.neon-border {
+  border: 1px solid rgba(0, 129, 207, 0.3);
+}
+
+@keyframes rotate-neon {
+  0% { border-color: #00C897; box-shadow: 0 0 15px #00C897; }
+  33% { border-color: #0081CF; box-shadow: 0 0 15px #0081CF; }
+  66% { border-color: #FF6B6B; box-shadow: 0 0 15px #FF6B6B; }
+  100% { border-color: #00C897; box-shadow: 0 0 15px #00C897; }
+}
+
+.animate-neon-rotate {
+  animation: rotate-neon 4s linear infinite;
+  border-width: 2px;
+}
